@@ -228,4 +228,3 @@ The app will be available at http://localhost:3000
 - Upload study materials (PDFs, images) through the app's UI — they are stored in `backend/uploads/`.
 - Ensure `.env` is configured in `backend/` before starting the backend.
 - Both frontend and backend must be running simultaneously.
-- The app uses a FAISS index (`faiss_index.bin`) and `metadata.json` for PYQ semantic search — these must be present in the project root for quiz/question features to work.
