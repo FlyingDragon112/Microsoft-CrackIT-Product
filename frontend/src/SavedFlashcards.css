@@ -1,0 +1,410 @@
+/* SavedFlashcards.css */
+
+/* ── Page ──────────────────────────────────────────────────────────────────── */
+.sf-page {
+  background: #F6FAFE;
+  min-height: 100vh;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.sf-content {
+  max-width: 1216px;
+  margin: 0 auto;
+  padding: 40px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.sf-loading {
+  padding: 40px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: #566167;
+}
+
+/* ── Grid Card ─────────────────────────────────────────────────────────────── */
+.sf-grid-card {
+  align-self: stretch;
+  height: 270px;
+  width: 270px;
+  background: #D9E4EC;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+  border-radius: 24px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.sf-grid-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0px 4px 16px rgba(0, 99, 158, 0.12);
+}
+
+.sf-grid-card__body {
+  flex: 1;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.sf-grid-card__concept {
+  color: #00639E;
+  font-size: 12px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  line-height: 16px;
+}
+
+.sf-grid-card__front {
+  font-size: 16px;        /* slightly smaller so math fits */
+  line-height: 24px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;  /* prevent overflow, clip at 3 lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.sf-grid-card__footer {
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.60);
+  backdrop-filter: blur(6px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sf-grid-card__subject {
+  color: #566167;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+}
+
+.sf-grid-card__flip-hint {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #00578B;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+}
+
+/* ── Modal Overlay ─────────────────────────────────────────────────────────── */
+.sf-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(42, 52, 58, 0.10);
+  backdrop-filter: blur(1px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+}
+
+.sf-overlay__close {
+  position: absolute;
+  top: 65px;
+  right: 32px;
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.20);
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+/* ── Modal Nav Row ─────────────────────────────────────────────────────────── */
+.sf-modal-row {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  max-width: 1024px;
+  width: 100%;
+}
+
+.sf-nav-btn {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: opacity 0.15s ease;
+}
+
+.sf-nav-btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+/* ── 3D Flip Card ──────────────────────────────────────────────────────────── */
+.sf-flipcard-wrapper {
+  flex: 1;
+  perspective: 1200px;
+}
+
+.sf-flipcard {
+  position: relative;
+  width: 100%;
+  min-height: 500px;
+  transform-style: preserve-3d;
+  transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sf-flipcard--flipped {
+  transform: rotateY(180deg);
+}
+
+.sf-flipcard__shell {
+  background: #D9E4EC;
+  box-shadow: 0px 25px 50px -12px rgba(0, 0, 0, 0.25);
+  border-radius: 24px;
+  padding: 4px;
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+}
+
+.sf-flipcard__shell--back {
+  transform: rotateY(180deg);
+}
+
+.sf-flipcard__inner {
+  background: white;
+  border-radius: 20px;
+  padding: 80px;
+  min-height: 492px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* ── Card Badge ────────────────────────────────────────────────────────────── */
+.sf-card-badge {
+  position: absolute;
+  top: 32px;
+  left: 32px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sf-card-badge__chapter {
+  padding: 4px 12px;
+  background: rgba(0, 99, 158, 0.10);
+  border-radius: 9999px;
+  color: #00639E;
+  font-size: 12px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+
+.sf-card-badge__count {
+  color: #566167;
+  font-size: 12px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+}
+
+/* ── Card Front Content ────────────────────────────────────────────────────── */
+.sf-card-front__content {
+  max-width: 672px;
+  text-align: center;
+}
+
+.sf-card-front__question {
+  color: #2A343A;
+  font-size: 36px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
+  line-height: 40px;
+  margin-bottom: 32px;
+}
+
+.sf-card-front__subject {
+  color: #566167;
+  font-size: 18px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  line-height: 29.25px;
+}
+
+/* ── Card Back Content ─────────────────────────────────────────────────────── */
+.sf-card-back__content {
+  max-width: 672px;
+  text-align: center;
+}
+
+.sf-card-back__label {
+  color: #00639E;
+  font-size: 13px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  margin-bottom: 24px;
+}
+
+.sf-card-back__answer {
+  color: #2A343A;
+  font-size: 24px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  line-height: 34px;
+}
+
+/* ── Card Actions ──────────────────────────────────────────────────────────── */
+.sf-card-actions {
+  padding-top: 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.sf-flip-btn {
+  padding: 20px 40px;
+  background: linear-gradient(90deg, #00639E 0%, #00578B 100%);
+  border-radius: 24px;
+  border: none;
+  cursor: pointer;
+  color: #F7F9FF;
+  font-size: 20px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
+  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.10);
+  transition: opacity 0.15s ease;
+}
+
+.sf-flip-btn:hover {
+  opacity: 0.9;
+}
+
+.sf-flip-back-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #00578B;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+}
+
+.sf-delete-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #566167;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  transition: opacity 0.15s ease;
+}
+
+.sf-delete-btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+/* ── Empty State ───────────────────────────────────────────────────────────── */
+.sf-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 60px 24px;
+  opacity: 0.4;
+}
+
+.sf-empty__skeleton {
+  width: 100%;
+  height: 200px;
+  background: #EEF4FA;
+  border-radius: 24px;
+  position: relative;
+}
+
+.sf-empty__skeleton-icon {
+  width: 48px;
+  height: 48px;
+  position: absolute;
+  left: 24px;
+  top: 24px;
+  background: #D9E4EC;
+  border-radius: 8px;
+}
+
+.sf-empty__skeleton-line1 {
+  width: 256px;
+  height: 16px;
+  position: absolute;
+  left: 24px;
+  top: 88px;
+  background: #D9E4EC;
+  border-radius: 4px;
+}
+
+.sf-empty__skeleton-line2 {
+  width: 171px;
+  height: 16px;
+  position: absolute;
+  left: 24px;
+  top: 112px;
+  background: #D9E4EC;
+  border-radius: 4px;
+}
+
+.sf-empty__text {
+  color: #64748B;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  margin-top: 16px;
+}
+
+.sf-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 1100px) {
+  .sf-cards-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .sf-cards-grid { grid-template-columns: repeat(2, 1fr); }
+}

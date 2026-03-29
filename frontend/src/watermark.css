@@ -1,0 +1,141 @@
+/* ─── Tutor Dashboard Layout ─── */
+
+/* Centering the dashboard within the parent (crackit-content) */
+.crackit-content:has(.tutor-container) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f8faff; /* Subtle background to distinguish from sidebar */
+}
+
+.tutor-container {
+    width: 100%;
+    max-width: 900px; /* Increased to accommodate 2x2 grid */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    padding: 20px;
+    font-family: 'Inter', sans-serif;
+    animation: fadeIn 0.6s ease-out;
+    opacity: 0.9;
+}
+
+/* Header Section */
+.tutor-header {
+    text-align: center;
+    max-width: 550px;
+}
+
+.tutor-logo-badge {
+    width: 60px;
+    height: 60px;
+    background: #2563EB;
+    border-radius: 18px;
+    margin: 0 auto 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 15px 30px -10px rgba(37, 99, 235, 0.3);
+    color: white;
+    font-size: 24px;
+}
+
+.tutor-title {
+    color: #2563EB;
+    font-size: 34px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+}
+
+.tutor-subtitle {
+    color: #566167;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+/* ─── 2x2 Grid Layout ─── */
+.tutor-options-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Forces 2 columns */
+    gap: 20px;
+    width: 100%;
+    max-width: 750px; /* Adjust based on desired card width */
+}
+
+.tutor-card {
+    background: white;
+    padding: 20px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.03), 0px 1px 2px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(169, 179, 187, 0.15);
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.tutor-card:hover {
+    transform: translateY(-4px);
+    border-color: #2563EB;
+    box-shadow: 0px 12px 24px -8px rgba(37, 99, 235, 0.15);
+}
+
+.card-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px; /* Changed to rounded square to match image */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    font-size: 18px;
+}
+
+.card-content {
+    flex-grow: 1;
+}
+
+.card-title {
+    color: #1E293B;
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+
+.card-desc {
+    color: #64748B;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+/* Chevron Icon */
+.arrow-icon {
+    width: 8px;
+    height: 8px;
+    border-top: 2px solid #CBD5E1;
+    border-right: 2px solid #CBD5E1;
+    transform: rotate(45deg);
+    transition: border-color 0.2s;
+}
+
+.tutor-card:hover .arrow-icon {
+    border-color: #2563EB;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive Hack: Stack on very small screens */
+@media (max-width: 600px) {
+    .tutor-options-list {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,421 @@
+.sp-calendar-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 8px 24px;
+}
+
+.sp-cal-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sp-cal-header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.sp-cal-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #2A343A;
+  line-height: 32px;
+  margin: 0;
+}
+
+.sp-cal-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  background: #EEF4FA;
+  border-radius: 9999px;
+}
+
+.sp-cal-nav-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease;
+}
+
+.sp-cal-nav-btn:hover {
+  background: rgba(86, 97, 103, 0.10);
+}
+
+.sp-cal-month-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: #2A343A;
+  line-height: 16px;
+  min-width: 80px;
+  text-align: center;
+}
+
+.sp-create-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 24px;
+  background: #5EB1FB;
+  border: none;
+  border-radius: 24px;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #002E4E;
+  line-height: 20px;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.sp-create-btn:hover  { background: #4ba3f0; }
+.sp-create-btn:active { transform: scale(0.97); }
+
+/* ── Calendar grid wrapper ───────────────────────────────────────────────────*/
+.sp-cal-grid-wrap {
+  background: #EEF4FA;
+  border-radius: 12px;
+  outline: 1px solid rgba(169, 179, 187, 0.05);
+  padding: 8px;
+  overflow: hidden;
+}
+
+.sp-cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 3px;
+}
+
+.sp-cal-grid--days {
+  grid-auto-rows: 70px;
+}
+
+.sp-cal-grid--labels {
+  margin-bottom: 2px;
+}
+
+.sp-cal-label {
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 900;
+  color: #566167;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  line-height: 15px;
+  padding-bottom: 4px;
+}
+
+/* ── Day cells ───────────────────────────────────────────────────────────────*/
+.sp-cal-day {
+  background: #fff;
+  border-radius: 10px;
+  outline: 1px solid rgba(169, 179, 187, 0.10);
+  padding: 5px 6px 6px;
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: outline-color 0.15s ease;
+}
+
+.sp-cal-day:hover {
+  outline-color: rgba(0, 99, 158, 0.20);
+}
+
+.sp-cal-day--prev {
+  opacity: 0.40;
+  background: rgba(255, 255, 255, 0.30);
+  outline: none;
+  cursor: default;
+}
+
+.sp-cal-day--prev:hover {
+  outline: none;
+}
+
+.sp-cal-day--today {
+  background: rgba(94, 177, 251, 0.20);
+  outline: 2px solid #00639E;
+  position: relative;
+}
+
+.sp-cal-day--today::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  box-shadow: 0 0 0 4px rgba(0, 99, 158, 0.05);
+  pointer-events: none;
+}
+
+.sp-cal-day-num {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: #2A343A;
+  line-height: 16px;
+  display: block;
+}
+
+.sp-cal-day--today .sp-cal-day-num {
+  font-weight: 900;
+  color: #00639E;
+}
+
+.sp-cal-day--prev .sp-cal-day-num {
+  font-weight: 400;
+}
+
+/* ── Event chips ─────────────────────────────────────────────────────────────*/
+.sp-cal-events {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 2px;
+}
+
+.sp-cal-chip {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-family: 'Inter', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 13.5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sp-cal-chip--outlined {
+  outline: 1px solid rgba(0, 110, 61, 0.20);
+}
+
+.sp-cal-chip-dot {
+  display: block;
+  width: 4px;
+  height: 4px;
+  border-radius: 9999px;
+  flex-shrink: 0;
+}
+
+.sp-cal-chip--overflow {
+  background: rgba(169, 179, 187, 0.15);
+  color: #566167;
+}
+
+/* ── Event Modal ─────────────────────────────────────────────────────────────*/
+.sp-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(42, 52, 58, 0.30);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: sp-cal-fadeIn 0.15s ease;
+}
+
+@keyframes sp-cal-fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.sp-modal {
+  background: #fff;
+  border-radius: 20px;
+  padding: 28px;
+  width: 340px;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.14);
+  animation: sp-cal-slideUp 0.18s ease;
+}
+
+@keyframes sp-cal-slideUp {
+  from { transform: translateY(12px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+.sp-modal-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #2A343A;
+  line-height: 26px;
+  margin-bottom: 18px;
+}
+
+.sp-modal-divider {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 900;
+  color: #566167;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.sp-modal-events {
+  margin-bottom: 16px;
+}
+
+.sp-modal-event-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
+  border-bottom: 1px solid #EEF4FA;
+}
+
+.sp-modal-event-item:last-child {
+  border-bottom: none;
+}
+
+.sp-modal-event-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  flex-shrink: 0;
+}
+
+.sp-modal-event-label {
+  flex: 1;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: #2A343A;
+}
+
+.sp-modal-event-del {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #A9B3BB;
+  font-size: 18px;
+  line-height: 1;
+  padding: 0 2px;
+  transition: color 0.15s ease;
+}
+
+.sp-modal-event-del:hover {
+  color: #A83836;
+}
+
+.sp-modal-field {
+  margin-bottom: 14px;
+}
+
+.sp-modal-label {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  color: #566167;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+
+.sp-modal-input {
+  width: 100%;
+  border: 1px solid rgba(169, 179, 187, 0.40);
+  border-radius: 10px;
+  padding: 9px 12px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: #2A343A;
+  outline: none;
+  background: #F7F9FB;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.sp-modal-input:focus {
+  border-color: #00639E;
+  background: #fff;
+}
+
+.sp-modal-input::placeholder {
+  color: #A9B3BB;
+}
+
+.sp-color-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.sp-color-swatch {
+  width: 22px;
+  height: 22px;
+  border-radius: 9999px;
+  cursor: pointer;
+  border: 2.5px solid transparent;
+  transition: transform 0.12s ease, border-color 0.12s ease;
+}
+
+.sp-color-swatch:hover {
+  transform: scale(1.18);
+}
+
+.sp-color-swatch.selected {
+  border-color: #2A343A;
+}
+
+.sp-modal-btns {
+  display: flex;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.sp-modal-save {
+  flex: 1;
+  background: #5EB1FB;
+  color: #002E4E;
+  border: none;
+  border-radius: 24px;
+  padding: 10px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.sp-modal-save:hover  { background: #4ba3f0; }
+.sp-modal-save:active { transform: scale(0.97); }
+
+.sp-modal-cancel {
+  flex: 1;
+  background: none;
+  border: 1px solid rgba(169, 179, 187, 0.40);
+  border-radius: 24px;
+  padding: 10px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #566167;
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.sp-modal-cancel:hover {
+  border-color: #566167;
+  color: #2A343A;
+}

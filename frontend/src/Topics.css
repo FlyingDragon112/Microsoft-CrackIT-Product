@@ -1,0 +1,246 @@
+/* =========================================
+   Subject Mastery — topics.css
+   ========================================= */
+
+/* Page layout */
+.subject-mastery {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 0 24px;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Page header */
+.page-header {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.page-title {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 32px;
+  color: #2a343a;
+  margin: 0;
+}
+
+.page-subtitle {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #566167;
+  margin: 0;
+}
+
+/* Subject list — scrolls the cards themselves */
+.subject-list {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-self: stretch;
+  overflow-y: auto;
+  flex: 1;
+  min-height: 0;           /* required for flex scroll to work */
+  padding-bottom: 24px;
+}
+
+/* Subject card — fixed max height, scrolls internally */
+.subject-card {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+  outline: 1px solid rgba(169, 179, 187, 0.1);
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  max-height: 500px;       /* card height cap — adjust to taste */
+  overflow: hidden;        /* clips rounded corners */
+}
+
+/* Subject header — sticky inside the card */
+.subject-header {
+  border: none;
+  outline: none;
+  font: inherit;
+  color: inherit;
+  appearance: none;
+  -webkit-appearance: none;
+
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  transition: background 0.2s ease;
+  box-sizing: border-box;
+  width: 100%;
+  flex-shrink: 0;          /* never shrink — always visible */
+  background: #ffffff;
+  border-radius: 16px 16px 0 0;
+  z-index: 2;
+}
+
+.subject-header:hover {
+  filter: brightness(0.97);
+}
+
+.subject-header__left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.subject-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.subject-title {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  color: #2a343a;
+}
+
+.subject-header__right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.subject-status {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  line-height: 15px;
+}
+
+/* Chevron animation */
+.chevron-icon {
+  transition: transform 0.25s ease;
+  flex-shrink: 0;
+}
+
+.chevron-icon.open {
+  transform: rotate(180deg);
+}
+
+/* Subject body — this is what scrolls */
+.subject-body {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;        /* scroll happens HERE */
+  flex: 1;
+  min-height: 0;
+}
+
+/* Scrollbar styling */
+.subject-body::-webkit-scrollbar {
+  width: 4px;
+}
+.subject-body::-webkit-scrollbar-track {
+  background: transparent;
+}
+.subject-body::-webkit-scrollbar-thumb {
+  background: rgba(169, 179, 187, 0.4);
+  border-radius: 999px;
+}
+
+/* Table header row — sticky inside .subject-body */
+.table-header-row {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(169, 179, 187, 0.05);
+  position: sticky;
+  top: 0;
+  background: #ffffff;
+  z-index: 1;
+  flex-shrink: 0;
+}
+
+.col-topic {
+  flex: 1;
+  padding: 12px 24px;
+  font-size: 10px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #566167;
+}
+
+.col-status {
+  width: 128px;
+  padding: 12px 24px;
+  font-size: 10px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #566167;
+  text-align: center;
+}
+
+/* Topic group header */
+.topic-group-header {
+  padding: 8px 24px 9px;
+  background: rgba(238, 244, 250, 0.2);
+  border-top: 1px solid rgba(169, 179, 187, 0.05);
+}
+
+.topic-group-name {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+}
+
+/* Subtopic row */
+.subtopic-row {
+  display: flex;
+  align-items: center;
+  border-top: 1px solid rgba(169, 179, 187, 0.05);
+}
+
+.subtopic-name {
+  flex: 1;
+  padding: 18px 24px 19px 40px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  color: #2a343a;
+}
+
+/* Status cell */
+.status-cell {
+  width: 128px;
+  padding: 16.5px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.status-box {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.status-box--empty {
+  background: transparent;
+} 

@@ -1,0 +1,189 @@
+/* PromptEditor Card */
+.pe-card {
+  width: 100%;
+  max-width: 720px;
+  background: #ffffff;
+  border-radius: 16px;
+  outline: 1px solid rgba(0, 99, 158, 0.10);
+  box-shadow:
+    0px 8px 10px -6px rgba(0, 0, 0, 0.10),
+    0px 20px 25px -5px rgba(0, 0, 0, 0.10);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Header */
+.pe-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(0, 99, 158, 0.05);
+}
+
+.pe-header-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.pe-header-label {
+  color: #00639E;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px;
+  letter-spacing: 0.02em;
+}
+
+/* Body */
+.pe-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Sections */
+.pe-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8.5px;
+  margin-bottom: 16px;
+}
+
+.pe-section-label {
+  color: rgba(86, 97, 103, 0.70);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 15px;
+  letter-spacing: 0.5px;
+}
+
+/* Pill Group */
+.pe-pill-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Pills */
+.pe-pill {
+  padding: 6px 12px;
+  border-radius: 9999px;
+  border: 1px solid rgba(169, 179, 187, 0.30);
+  background: transparent;
+  color: #2A343A;
+  font-size: 11px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  line-height: 16.5px;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+  white-space: nowrap;
+}
+
+.pe-pill:hover:not(.pe-pill--active) {
+  border-color: rgba(0, 99, 158, 0.25);
+  background: rgba(0, 99, 158, 0.03);
+}
+
+.pe-pill--active {
+  background: rgba(0, 99, 158, 0.05);
+  border: 1px solid rgba(0, 99, 158, 0.20);
+  color: #00639E;
+}
+
+/* Bottom Row */
+.pe-bottom-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 32px;
+  flex-wrap: wrap;
+  padding-bottom: 3px;
+}
+
+/* Toggle Group */
+.pe-toggle-group {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+/* Toggle Switch */
+.pe-toggle {
+  display: flex;
+  flex-direction: row;
+  width: 128px;
+  padding: 4px;
+  background: #EEF4FA;
+  border-radius: 12px;
+  gap: 0;
+}
+
+.pe-toggle-option {
+  flex: 1;
+  padding: 4px 0;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  font-size: 10px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  line-height: 15px;
+  cursor: pointer;
+  color: #2A343A;
+  text-align: center;
+  transition: background 0.15s ease, box-shadow 0.15s ease, color 0.15s ease;
+}
+
+.pe-toggle-option--active {
+  background: #ffffff;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+  color: #00639E;
+}
+
+.pe-toggle-option--inactive {
+  background: transparent;
+  color: #2A343A;
+}
+
+/* Apply Button */
+.pe-apply-btn {
+  width: 165px;
+  padding: 12px 0;
+  background: #00639E;
+  border-radius: 24px;
+  border: none;
+  color: #F7F9FF;
+  font-size: 12px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  line-height: 16px;
+  text-align: center;
+  cursor: pointer;
+  box-shadow:
+    0px 2px 4px -2px rgba(0, 99, 158, 0.20),
+    0px 4px 6px -1px rgba(0, 99, 158, 0.20);
+  transition: background 0.15s ease, box-shadow 0.15s ease, transform 0.1s ease;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.pe-apply-btn:hover {
+  background: #005a8e;
+  box-shadow:
+    0px 4px 8px -2px rgba(0, 99, 158, 0.30),
+    0px 6px 10px -1px rgba(0, 99, 158, 0.25);
+}
+
+.pe-apply-btn:active {
+  transform: scale(0.98);
+  background: #004f7c;
+}
