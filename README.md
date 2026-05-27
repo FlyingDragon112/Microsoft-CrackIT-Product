@@ -2,6 +2,10 @@
 
 CrackIT is an AI-powered study assistant that helps students understand textbook content through an interactive chat interface. Upload PDF documents, ask questions, and get detailed explanations with full LaTeX math rendering.
 
+## Demo Video
+
+https://youtu.be/CN1ee8-w654
+
 ## Tech Stack
 
 - **Frontend:** React 19, React Markdown, KaTeX, MathJax
